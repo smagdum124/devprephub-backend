@@ -3,6 +3,7 @@ import Question from "../models/Question.js";
 import Blog from "../models/Blog.js";
 import ResumeTip from "../models/ResumeTip.js";
 import Contact from "../models/Contact.js";
+import Newsletter from "../models/Newsletter.js";
 
 export const getDashboardStats =
   async (req, res) => {
@@ -18,8 +19,10 @@ export const getDashboardStats =
 
       const totalResumeTips =
         await ResumeTip.countDocuments();
-      const totalContacts = 
-      await Contact.countDocuments();
+      const totalContacts =
+        await Contact.countDocuments();
+      const totalSubscribers =
+        await Newsletter.countDocuments();
 
       res.json({
         success: true,
@@ -28,7 +31,8 @@ export const getDashboardStats =
           totalQuestions,
           totalBlogs,
           totalResumeTips,
-          totalContacts
+          totalContacts,
+           totalSubscribers,
         },
       });
     } catch (error) {

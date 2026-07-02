@@ -6,10 +6,17 @@ import blogRoutes from "./routes/blogRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import newsletterRoutes from "./routes/newsletterRoutes.js";
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://devprephub.vercel.app",
+    ],
+    credentials: true,
+}));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -37,5 +44,9 @@ app.use(
     dashboardRoutes
 );
 app.use("/api/contact", contactRoutes);
+app.use(
+    "/api/newsletter",
+    newsletterRoutes
+);
 
 export default app;
