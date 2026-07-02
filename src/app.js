@@ -12,7 +12,8 @@ const app = express();
 
 app.use(cors({
     origin: [
-        "https://devprephub.vercel.app"
+        "http://localhost:5173",
+        "https://devprephub-nine.vercel.app",
     ],
     credentials: true,
 }));
